@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Autofac;
@@ -155,17 +156,17 @@ namespace SFA.DAS.Payments.ServiceFabric.Core
 
         private List<Type> GetBatchHandledMessageTypes()
         {
-            List<Type> genericTypes = new List<Type>();
+            var genericTypes = new List<Type>();
 
             var types = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(assembly => assembly.GetTypes());
+                .SelectMany(GetLoadableTypes);
 
             foreach (var type in types)
             {
-                foreach (Type intType in type.GetInterfaces())
+                foreach (var intType in type.GetInterfaces())
                 {
-                    if (intType.IsGenericType && intType.GetGenericTypeDefinition()
-                        == typeof(IHandleMessageBatches<>))
+                    if (intType.IsGenericType &&
+                        intType.GetGenericTypeDefinition() == typeof(IHandleMessageBatches<>))
                     {
                         genericTypes.Add(intType.GetGenericArguments()[0]);
                     }
@@ -173,6 +174,20 @@ namespace SFA.DAS.Payments.ServiceFabric.Core
             }
 
             return genericTypes;
+        }
+
+        private static IEnumerable<Type> GetLoadableTypes(Assembly assembly)
+        {
+            try
+            {
+                return assembly.GetTypes();
+            }
+            catch (ReflectionTypeLoadException ex)
+            {
+                return ex.Types
+                    .Where(type => type != null)
+                    .Cast<Type>();
+            }
         }
 
         private async Task<List<(Object Message, BatchMessageReceiver Receiver, ServiceBusReceivedMessage ReceivedMessage)>> ReceiveMessages(BatchMessageReceiver messageReceiver, CancellationToken cancellationToken)
