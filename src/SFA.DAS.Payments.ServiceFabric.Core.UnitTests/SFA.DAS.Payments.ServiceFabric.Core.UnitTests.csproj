@@ -16,8 +16,8 @@
     <PackageReference Include="Moq" Version="4.10.0" />
     <PackageReference Include="nunit" Version="3.11.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.11.2" />
-    <PackageReference Include="SFA.DAS.Payments.Application" Version="2.3.0" />
-    <PackageReference Include="SFA.DAS.Payments.EarningEvents.Messages" Version="0.1.129" />
+    <PackageReference Include="SFA.DAS.Payments.Application" Version="2.7.1-prerelease-2" />
+    <PackageReference Include="SFA.DAS.Payments.EarningEvents.Messages" Version="2.0.15-prerelease-3" />
     <PackageReference Include="SFA.DAS.Payments.FundingSource.Messages" Version="0.2.1" />
   </ItemGroup>
 

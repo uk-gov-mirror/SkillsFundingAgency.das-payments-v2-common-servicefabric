@@ -13,6 +13,7 @@ using SFA.DAS.Payments.ServiceFabric.Core.Messaging;
 
 namespace SFA.DAS.Payments.ServiceFabric.Core.UnitTests.Messaging
 {
+
     [TestFixture]
     public class DuplicateEarningEventServiceTests
     {

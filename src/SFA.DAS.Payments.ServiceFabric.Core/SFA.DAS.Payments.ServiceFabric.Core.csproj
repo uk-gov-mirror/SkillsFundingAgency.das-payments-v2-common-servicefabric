@@ -37,11 +37,11 @@
     <PackageReference Include="Microsoft.ServiceFabric.Services" Version="7.0.1001" />
     <PackageReference Include="NServiceBus" Version="8.1.1" />
 
-    <PackageReference Include="SFA.DAS.Payments.Core" Version="2.3.0" />
-    <PackageReference Include="SFA.DAS.Payments.Application" Version="2.3.0" />
-    <PackageReference Include="SFA.DAS.Payments.Messages.Common" Version="2.3.0" />
-    <PackageReference Include="SFA.DAS.Payments.Messaging" Version="2.3.0" />
-    <PackageReference Include="SFA.DAS.Payments.Model.Core" Version="2.3.0" />
+    <PackageReference Include="SFA.DAS.Payments.Core" Version="2.7.1-prerelease-2" />
+    <PackageReference Include="SFA.DAS.Payments.Application" Version="2.7.1-prerelease-2" />
+    <PackageReference Include="SFA.DAS.Payments.Messages.Common" Version="2.7.1-prerelease-2" />
+    <PackageReference Include="SFA.DAS.Payments.Messaging" Version="2.7.1-prerelease-2" />
+    <PackageReference Include="SFA.DAS.Payments.Model.Core" Version="2.7.1-prerelease-2" />
   </ItemGroup>
 
   <ItemGroup>
